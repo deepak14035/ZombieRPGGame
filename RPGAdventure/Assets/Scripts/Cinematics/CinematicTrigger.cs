@@ -5,6 +5,7 @@ using UnityEngine.Playables;
 
 public class CinematicTrigger : MonoBehaviour
 {
+    bool alreadyTriggered=false;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +19,10 @@ public class CinematicTrigger : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        GetComponent<PlayableDirector>().Play();
+        if (!alreadyTriggered && other.gameObject.tag == "Player")
+        {
+            GetComponent<PlayableDirector>().Play();
+            alreadyTriggered=true;
+        }
     }
 }

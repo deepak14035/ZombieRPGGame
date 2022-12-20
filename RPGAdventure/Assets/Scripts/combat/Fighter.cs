@@ -48,6 +48,7 @@ namespace RPG.combat
         {
             Debug.Log("[Figher] cancelling");
             GetComponent<Animator>().SetTrigger("stopAttack");
+            GetComponent<Mover>().cancel();
             target = null;
         }
 
